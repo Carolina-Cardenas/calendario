@@ -18,7 +18,7 @@ const customStyles = {
 
 export const CalendarModal = () => {
 
-  const[isOpen,setIsOpen] = useState (true);
+   const[isOpen, setIsOpen] = useState (true);
 
   const[formValues, setFormValues] = useState({
  title: 'Nataly',
@@ -54,7 +54,7 @@ const onCloseModal = () => {
 
     <div className="form-group mb-2">
         <label>Fecha y hora inicio</label>
-        <DatePicker selected={formValues.start} />
+        {/* <DatePicker selected= { formValues.star } /> */}
     </div>
 
     <div className="form-group mb-2">
@@ -72,7 +72,7 @@ const onCloseModal = () => {
             name="title"
             autoComplete="off"
             value={formValues.tilte}
-            onChange={onInputchanged}
+            onChange={ onInputchanged }
         />
         <small id="emailHelp" className="form-text text-muted">Una descripción corta</small>
     </div>
@@ -85,6 +85,7 @@ const onCloseModal = () => {
             rows="5"
             name="notes"
             value={formValues.notes}
+            onChange={ onInputchanged }
         ></textarea>
         <small id="emailHelp" className="form-text text-muted">Información adicional</small>
     </div>
