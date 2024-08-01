@@ -1,8 +1,14 @@
-import { addHours } from 'date-fns';
+import { addHours, differenceInSeconds } from 'date-fns';
 import { useState } from 'react';
 import Modal from 'react-modal';
-import DatePicker from "react-datepicker";
+import DatePicker, { registerLocale } from "react-datepicker";
 import "react-datepicker/dist/react-datepicker.css";
+import { es } from 'date-fns/locale/es';
+import Swal from 'sweetalert2';
+// import 'sweetalert2./min.css'
+
+
+registerLocale('es', es);
 
 const customStyles = {
     content: {
@@ -47,6 +53,28 @@ const onCloseModal = () => {
   console.log('cerrando modal');
  setIsOpen(false);
 }
+
+const onSubmit = (event) =>{
+  event.preventDefault();
+
+
+  const difference = differenceInSeconds (formValues.end, formValues.start);
+  console.log({difference});
+
+  if(isNaN(difference) ||difference <= 0 )  {
+   Swal.fire ('fechas incorrectas','ravisar las fechas ingresadas', 'error');
+    return;
+  }
+
+  if (formValues.title.length <= 0) 
+    return;
+  console.log(formValues);
+
+  //Todo
+}
+
+
+
   return (
 <Modal
         isOpen= { isOpen}
@@ -59,13 +87,18 @@ const onCloseModal = () => {
 
 <h1> Nuevo evento </h1>
 <hr />
-<form className="container">
+<form className="container" onSubmit={onSubmit}>
 
     <div className="form-group mb-2">
         <label>Fecha y hora inicio</label>
-        <DatePicker selected= { formValues.start }
-        onChange={ (event) => onDateChanged(event, 'start')}
+        <DatePicker 
+         selected= { formValues.start }
+         onChange={ (event) => onDateChanged(event, 'start')}
          className= "formControl"
+         dateFormat="Pp"
+         showTimeSelect
+         locale= "es"
+         timeCaption="hora"
         
         /> 
         
@@ -73,7 +106,17 @@ const onCloseModal = () => {
 
     <div className="form-group mb-2">
         <label>Fecha y hora fin</label>
-        <input className="form-control" placeholder="Fecha inicio" />
+        <DatePicker 
+         selected= { formValues.end }
+         minDate={ formValues.start }
+         onChange={ (event) => onDateChanged(event, 'end')}
+         className= "formControl"
+         dateFormat="Pp"
+         showTimeSelect
+         locale= "es"
+         timeCaption="hora"
+        
+        /> 
     </div>
 
     <hr />

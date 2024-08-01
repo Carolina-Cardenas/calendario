@@ -131,6 +131,7 @@
     }
   },
   "dependencies": {
-    "react-datepicker": "^2.9.4"
+    "react-datepicker": "^2.9.4",
+    "sweetalert2": "^11.12.3"
   }
 }
