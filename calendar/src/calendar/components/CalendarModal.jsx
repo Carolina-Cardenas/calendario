@@ -2,6 +2,7 @@ import { addHours } from 'date-fns';
 import { useState } from 'react';
 import Modal from 'react-modal';
 import DatePicker from "react-datepicker";
+import "react-datepicker/dist/react-datepicker.css";
 
 const customStyles = {
     content: {
@@ -18,19 +19,27 @@ const customStyles = {
 
 export const CalendarModal = () => {
 
-   const[isOpen, setIsOpen] = useState (true);
+  const[isOpen, setIsOpen] = useState (true);
 
   const[formValues, setFormValues] = useState({
- title: 'Nataly',
- notes: 'Cárdenas',
- start: new Date(),
- end: addHours (new Date(), 2),
+      title: 'Nataly',
+      notes: 'Cárdenas',
+      start: new Date(),
+      end: addHours (new Date(), 2),
   });
 
   const onInputchanged = ({target}) => {
     setFormValues ({
       ...formValues,
       [target.name]: target.value
+    })
+  }
+
+
+  const onDateChanged =(event, changing) =>{
+    setFormValues ({
+      ...formValues,
+      [changing]: event
     })
   }
 
@@ -54,7 +63,12 @@ const onCloseModal = () => {
 
     <div className="form-group mb-2">
         <label>Fecha y hora inicio</label>
-        { <DatePicker selected= { formValues.star } /> }
+        <DatePicker selected= { formValues.start }
+        onChange={ (event) => onDateChanged(event, 'start')}
+         className= "formControl"
+        
+        /> 
+        
     </div>
 
     <div className="form-group mb-2">
@@ -71,7 +85,7 @@ const onCloseModal = () => {
             placeholder="Título del evento"
             name="title"
             autoComplete="off"
-            value={formValues.tilte}
+            value={formValues.title}
             onChange={ onInputchanged }
         />
         <small id="emailHelp" className="form-text text-muted">Una descripción corta</small>
