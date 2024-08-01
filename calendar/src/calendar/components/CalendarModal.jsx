@@ -54,7 +54,7 @@ const onCloseModal = () => {
 
     <div className="form-group mb-2">
         <label>Fecha y hora inicio</label>
-        {/* <DatePicker selected= { formValues.star } /> */}
+        { <DatePicker selected= { formValues.star } /> }
     </div>
 
     <div className="form-group mb-2">
