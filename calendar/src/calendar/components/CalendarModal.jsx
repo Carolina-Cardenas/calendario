@@ -30,31 +30,31 @@ const customStyles = {
 
  export const CalendarModal = () => {
   
-  const {isDateModalOpen} = useUiStore();
+  const { isDateModalOpen, closeDateModal } = useUiStore();
   const [ formSubmitted, setFormSubmitted ] = useState(false);
 
-  const[formValues, setFormValues] = useState({
+  const[ formValues, setFormValues ] = useState ({
       title: 'Nataly',
       notes: 'Cárdenas',
       start: new Date(),
       end: addHours (new Date(), 2),
   });
 
-  const titleClass = useMemo( ( ) => {
-    if (!formSubmitted) return '';
+  const titleClass = useMemo ( ( ) => {
+    if ( !formSubmitted ) return '';
 
-    return(formValues.title.length >0 ) 
+    return( formValues.title.length >0 ) 
     ?''
     :'is-invalid';
 
-  }, [ formValues.title, formSubmitted])
+  }, [ formValues.title, formSubmitted ])
 
 
 
-  const onInputchanged = ({target}) => {
+  const onInputchanged = ({ target }) => {
     setFormValues ({
       ...formValues,
-      [target.name]: target.value
+      [ target.name ]: target.value
     })
   }
 
@@ -68,18 +68,18 @@ const customStyles = {
   }
 
     const onCloseModal = () => {
-    console.log('cerrando modal');
+    closeDateModal();
 }
 
   const onSubmit = (event) =>{
   event.preventDefault();
-  setFormSubmitted(true);
+  setFormSubmitted( true );
 
 
   const difference = differenceInSeconds (formValues.end, formValues.start);
   console.log({difference});
 
-  if(isNaN(difference) ||difference <= 0 )  {
+  if(isNaN(difference) || difference <= 0 )  {
    Swal.fire('fechas incorrectas','ravisar las fechas ingresadas', 'error');
     return;
   }
