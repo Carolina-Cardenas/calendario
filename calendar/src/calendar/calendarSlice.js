@@ -14,3 +14,37 @@
 // }); 
 
 // export const { increment }= calendarSlice.actions;
+import { createSlice } from "@reduxjs/toolkit";
+import { addHours } from "date-fns";
+
+
+const tempEvent = {
+     _id: new Date ().getTime(), 
+      title: 'agregar paciente',
+      notes: 'datos del paciente',
+      start:  new Date().toISOString(),
+      end: addHours(new Date(), 2).toISOString(),
+      bgColor:'#fafafa',
+      user: {
+           _id: '123',
+           name: 'Nataly'
+      }
+    };
+
+    export const calendarSlice = createSlice({
+     name:'calendar',
+     initialState: {
+     events: [ 
+      tempEvent 
+    ],
+     activeEvent: null
+     },
+     reducers:{
+         onSetActiveEvent: (state, { payload } ) => {
+            state.activeEvent = payload;
+    },
+  }
+ }); 
+
+export const { onSetActiveEvent }= calendarSlice.actions;
+export default calendarSlice.reducer;

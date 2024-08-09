@@ -3,7 +3,7 @@ import { oncloseDateModal,  onOpenDateModal} from "../store";
 
 
 export const useUiStore = () => {
-   
+
 const dispatch = useDispatch();
 
  const { isDateModalOpen }
@@ -17,8 +17,8 @@ const closeDateModal = () => {
 }
 const toggleDateModal = () => {
     ( isDateModalOpen )
-    ? openDateModal()
-    : closeDateModal()
+    ? closeDateModal()
+    : openDateModal()
 }
 
 return{

@@ -31,7 +31,7 @@ const eventStyleGetter = ( event, start, end, isSelected) => {
   }
 
   const onDoubleClick = ( event ) => {
-    // console.log({ DoubleClick: event });
+    console.log({ DoubleClick: event });
     openDateModal();
   }
   

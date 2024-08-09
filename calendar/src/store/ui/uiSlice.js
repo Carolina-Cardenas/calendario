@@ -3,11 +3,11 @@ import { createSlice } from "@reduxjs/toolkit";
 export const uiSlice = createSlice({
     name: 'ui',
     initialState: {
-        isDateModalOpen:true
+        isDateModalOpen:false
     },
     reducers:{
         onOpenDateModal: ( state ) => {
-            state.isDateModalOpen = false
+            state.isDateModalOpen = true
         },
         oncloseDateModal: (state) => {
             state.isDateModalOpen = false;
