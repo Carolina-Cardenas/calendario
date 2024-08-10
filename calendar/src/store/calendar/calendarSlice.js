@@ -22,8 +22,8 @@ const tempEvent = {
      _id: new Date ().getTime(), 
       title: 'agregar paciente',
       notes: 'datos del paciente',
-      start:  new Date().toISOString(),
-      end: addHours(new Date(), 2).toISOString(),
+      start:  new Date(),
+      end: addHours(new Date(), 2),
       bgColor:'#fafafa',
       user: {
            _id: '123',

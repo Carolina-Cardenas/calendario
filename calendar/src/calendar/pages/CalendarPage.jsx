@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import { Calendar} from 'react-big-calendar'
+import { Calendar } from 'react-big-calendar';
 import 'react-big-calendar/lib/css/react-big-calendar.css'
 import{ addHours } from "date-fns"
 
@@ -13,7 +13,7 @@ import { useUiStore, useCalendarStore } from '../../hooks';
 export const CalendarPage = () => {
 
 const { openDateModal } = useUiStore();
-const { events } = useCalendarStore();
+const { events, setActiveEvent } = useCalendarStore();
 const [lastView, setLastView ] = useState(localStorage.getItem('lastView') || 'week');
 const eventStyleGetter = ( event, start, end, isSelected) => {
 
@@ -36,7 +36,7 @@ const eventStyleGetter = ( event, start, end, isSelected) => {
   }
   
   const onSelect = (event) => {
-    console.log({ Click: event });
+  setActiveEvent (event);
   }
 
   const onViewChanged = (event) => {
