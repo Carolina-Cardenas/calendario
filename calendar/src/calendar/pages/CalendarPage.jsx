@@ -31,12 +31,12 @@ const eventStyleGetter = ( event, start, end, isSelected) => {
   }
 
   const onDoubleClick = ( event ) => {
-    console.log({ DoubleClick: event });
-    openDateModal();
+    // console.log({ DoubleClick: event });
+    openDateModal(event);
   }
   
   const onSelect = (event) => {
-  setActiveEvent (event);
+  setActiveEvent ( event );
   }
 
   const onViewChanged = (event) => {
