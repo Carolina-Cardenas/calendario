@@ -38,7 +38,8 @@ const startSavingEvent  = async(calendarEvent) => {
 
 }
 
-const deleteEvent = () =>{
+const startDeletingEvent = () =>{
+  //LLEGAR AL BAKEND
 dispatch(onDeleteEvent());
 
 }
@@ -49,11 +50,12 @@ return {
 //PROPIEDADES
 activeEvent,
 events,
+hasEventSelected: !!activeEvent,
 
 //METODOS
 setActiveEvent,
 startSavingEvent,
-deleteEvent,
+startDeletingEvent,
 
 }
 }
