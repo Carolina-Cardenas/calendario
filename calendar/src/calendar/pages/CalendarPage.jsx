@@ -3,7 +3,7 @@ import { Calendar } from 'react-big-calendar';
 import 'react-big-calendar/lib/css/react-big-calendar.css'
 
 
-import { CalendarBoxEvent, CalendarModal, FabAddNew, NavBar } from "../"
+import { CalendarBoxEvent, CalendarModal, FabAddNew, FabDelete, NavBar } from "../"
 import { localizer, getMessagesES} from '../../helpers'
 import { useUiStore, useCalendarStore } from '../../hooks';
 
@@ -68,6 +68,7 @@ const eventStyleGetter = ( event, start, end, isSelected) => {
     />
     <CalendarModal/>
     <FabAddNew/>
+    <FabDelete/>
     </>
   )
 

@@ -38,14 +38,17 @@ const tempEvent = {
            
             if ( event._id === payload._id ) {
               return payload;
-
             }
 
              return event;
          });
-        }  
+        },
+        onDeleteEvent: ( state ) => {
+          state.events = state.events.filter(event => event._id !== state.activeEvent._id);
+          state.activeEvent = null;
+        }
       }
  });
 
-export const { onSetActiveEvent, onAddNewEvent, onUpDateEvent }= calendarSlice.actions;
+export const { onSetActiveEvent, onAddNewEvent, onUpDateEvent, onDeleteEvent }= calendarSlice.actions;
 export default calendarSlice.reducer;
