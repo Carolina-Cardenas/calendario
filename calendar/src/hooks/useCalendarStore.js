@@ -1,5 +1,6 @@
 import { useDispatch, useSelector } from "react-redux"
 import { onSetActiveEvent } from '../store'
+import { onAddNewEvent } from "../store/calendar/calendarSlice";
 
 
 
@@ -13,7 +14,26 @@ const setActiveEvent = ( calendarEvent ) => {
   dispatch ( onSetActiveEvent  (calendarEvent))
 }
 
+const startSavingEvent  = async(calendarEvent) => {
+ //TODO LLEGAR AL BACKEND
 
+  // Convertir los objetos Date a timestamps (que son serializables) CHAT GPT
+ const eventToSave = {
+  ...calendarEvent,
+  start: calendarEvent.start.getTime(),  // o .toISOString()
+  end: calendarEvent.end.getTime(),};
+//
+
+
+ //TODO BIEN
+ if(calendarEvent._id){
+  //ACTUALIZANDO
+ }
+ else {
+  //CREANDO
+  dispatch (onAddNewEvent ({ ...calendarEvent, _id:new Date().getTime()}))
+}
+}
 
 return { 
    
@@ -23,6 +43,7 @@ events,
 
 //METODOS
 setActiveEvent,
+startSavingEvent,
 
 }
 }
